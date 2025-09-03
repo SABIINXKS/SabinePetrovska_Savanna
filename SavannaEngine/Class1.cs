@@ -7,8 +7,23 @@
         public int Y { get; set; }
         public int Speed { get; set; }
         public int VisionRange { get; set; }
+        public int ActionInterval { get; set; } // How many ticks between actions
+        private int _actionCounter = 0;         // Internal tick counter
+
+        // Called by GameEngine each tick
+        public void Tick(List<Animal> animals, int fieldWidth, int fieldHeight)
+        {
+            _actionCounter++;
+            if (_actionCounter >= ActionInterval)
+            {
+                Move(animals, fieldWidth, fieldHeight);
+                PerformSpecialAction(animals);
+                _actionCounter = 0;
+            }
+        }
 
         public abstract void Move(List<Animal> animals, int fieldWidth, int fieldHeight);
+        public virtual void PerformSpecialAction(List<Animal> animals) { }
         protected double DistanceTo(Animal other) =>
             Math.Sqrt(Math.Pow(X - other.X, 2) + Math.Pow(Y - other.Y, 2));
     }
@@ -20,11 +35,11 @@
             Name = "Antelope";
             Speed = 2;
             VisionRange = 5;
+            ActionInterval = 2; // Acts every 2 ticks
         }
 
         public override void Move(List<Animal> animals, int fieldWidth, int fieldHeight)
         {
-            // Find nearest Lion within vision range
             var nearestLion = animals
                 .OfType<Lion>()
                 .OrderBy(l => DistanceTo(l))
@@ -32,7 +47,6 @@
 
             if (nearestLion != null)
             {
-                // Move away from Lion
                 int dx = X - nearestLion.X;
                 int dy = Y - nearestLion.Y;
                 if (dx != 0) X += Math.Sign(dx) * Speed;
@@ -40,11 +54,15 @@
             }
             else
             {
-                // Random move if no Lion nearby
                 Random rnd = new();
                 X = Math.Clamp(X + rnd.Next(-Speed, Speed + 1), 0, fieldWidth - 1);
                 Y = Math.Clamp(Y + rnd.Next(-Speed, Speed + 1), 0, fieldHeight - 1);
             }
+        }
+
+        public override void PerformSpecialAction(List<Animal> animals)
+        {
+            // Example: Antelope could "jump" or "hide" (not implemented, placeholder)
         }
     }
 
@@ -55,11 +73,11 @@
             Name = "Lion";
             Speed = 3;
             VisionRange = 7;
+            ActionInterval = 1; // Acts every tick
         }
 
         public override void Move(List<Animal> animals, int fieldWidth, int fieldHeight)
         {
-            // Find nearest Antelope within vision range
             var nearestAntelope = animals
                 .OfType<Antelope>()
                 .OrderBy(a => DistanceTo(a))
@@ -67,23 +85,25 @@
 
             if (nearestAntelope != null)
             {
-                // Move toward Antelope
                 int dx = nearestAntelope.X - X;
                 int dy = nearestAntelope.Y - Y;
                 if (dx != 0) X += Math.Sign(dx) * Speed;
                 if (dy != 0) Y += Math.Sign(dy) * Speed;
 
-                // Eat Antelope if reached
                 if (DistanceTo(nearestAntelope) == 0)
                     animals.Remove(nearestAntelope);
             }
             else
             {
-                // Random move if no Antelope nearby
                 Random rnd = new();
                 X = Math.Clamp(X + rnd.Next(-Speed, Speed + 1), 0, fieldWidth - 1);
                 Y = Math.Clamp(Y + rnd.Next(-Speed, Speed + 1), 0, fieldHeight - 1);
             }
+        }
+
+        public override void PerformSpecialAction(List<Animal> animals)
+        {
+            // Example: Lion could "roar" (not implemented, placeholder)
         }
     }
 
@@ -101,7 +121,6 @@
 
         public void AddAnimal(Animal animal)
         {
-            // Place animal at random position
             Random rnd = new();
             animal.X = rnd.Next(0, FieldWidth);
             animal.Y = rnd.Next(0, FieldHeight);
@@ -110,10 +129,9 @@
 
         public void Tick()
         {
-            // Copy list to avoid modification during iteration
             var currentAnimals = Animals.ToList();
             foreach (var animal in currentAnimals)
-                animal.Move(Animals, FieldWidth, FieldHeight);
+                animal.Tick(Animals, FieldWidth, FieldHeight);
         }
     }
 }
