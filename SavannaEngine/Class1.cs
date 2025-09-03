@@ -49,8 +49,10 @@
             {
                 int dx = X - nearestLion.X;
                 int dy = Y - nearestLion.Y;
-                if (dx != 0) X += Math.Sign(dx) * Speed;
-                if (dy != 0) Y += Math.Sign(dy) * Speed;
+                int moveX = Math.Abs(dx) < Speed ? dx : Math.Sign(dx) * Speed;
+                int moveY = Math.Abs(dy) < Speed ? dy : Math.Sign(dy) * Speed;
+                X = Math.Clamp(X + moveX, 0, fieldWidth - 1);
+                Y = Math.Clamp(Y + moveY, 0, fieldHeight - 1);
             }
             else
             {
@@ -87,8 +89,10 @@
             {
                 int dx = nearestAntelope.X - X;
                 int dy = nearestAntelope.Y - Y;
-                if (dx != 0) X += Math.Sign(dx) * Speed;
-                if (dy != 0) Y += Math.Sign(dy) * Speed;
+                int moveX = Math.Abs(dx) < Speed ? dx : Math.Sign(dx) * Speed;
+                int moveY = Math.Abs(dy) < Speed ? dy : Math.Sign(dy) * Speed;
+                X = Math.Clamp(X + moveX, 0, fieldWidth - 1);
+                Y = Math.Clamp(Y + moveY, 0, fieldHeight - 1);
 
                 if (DistanceTo(nearestAntelope) == 0)
                     animals.Remove(nearestAntelope);
