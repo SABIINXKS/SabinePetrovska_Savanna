@@ -26,11 +26,9 @@ class Program
             Console.WriteLine("Press 'A' to add Antelope, 'L' to add Lion, 'Q' to quit.");
             Console.WriteLine("Animals on field:");
             foreach (var animal in engine.Animals)
-                Console.WriteLine($"{animal.Name} at ({animal.X}, {animal.Y})");
+                Console.WriteLine($"{animal.Name} at ({animal.X}, {animal.Y}) | Health: {animal.Health}");
 
             Thread.Sleep(500); // Slow down the loop for visibility
         }
     }
 }
-
-
