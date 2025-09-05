@@ -8,6 +8,7 @@
         public int Speed { get; set; }
         public int VisionRange { get; set; }
         public int ActionInterval { get; set; } // How many ticks between actions
+        public int Health { get; set; }         // Health metric added
         private int _actionCounter = 0;         // Internal tick counter
 
         // Called by GameEngine each tick
@@ -36,6 +37,7 @@
             Speed = 2;
             VisionRange = 5;
             ActionInterval = 2; // Acts every 2 ticks
+            Health = 100;       // Initial health value
         }
 
         public override void Move(List<Animal> animals, int fieldWidth, int fieldHeight)
@@ -76,6 +78,7 @@
             Speed = 3;
             VisionRange = 7;
             ActionInterval = 1; // Acts every tick
+            Health = 120;       // Initial health value
         }
 
         public override void Move(List<Animal> animals, int fieldWidth, int fieldHeight)
