@@ -8,7 +8,7 @@
         public int Speed { get; set; }
         public int VisionRange { get; set; }
         public int ActionInterval { get; set; } // How many ticks between actions
-        public int Health { get; set; }         // Health metric added
+        public double Health { get; set; }      // Health metric (changed to double)
         private int _actionCounter = 0;         // Internal tick counter
 
         // Called by GameEngine each tick
@@ -27,6 +27,11 @@
         public virtual void PerformSpecialAction(List<Animal> animals) { }
         protected double DistanceTo(Animal other) =>
             Math.Sqrt(Math.Pow(X - other.X, 2) + Math.Pow(Y - other.Y, 2));
+
+        protected void DecreaseHealthOnMove()
+        {
+            Health -= 0.5;
+        }
     }
 
     public class Antelope : Animal
@@ -37,11 +42,13 @@
             Speed = 2;
             VisionRange = 5;
             ActionInterval = 2; // Acts every 2 ticks
-            Health = 100;       // Initial health value
+            Health = 100;       // Initial health
         }
 
         public override void Move(List<Animal> animals, int fieldWidth, int fieldHeight)
         {
+            DecreaseHealthOnMove();
+
             var nearestLion = animals
                 .OfType<Lion>()
                 .OrderBy(l => DistanceTo(l))
@@ -63,11 +70,6 @@
                 Y = Math.Clamp(Y + rnd.Next(-Speed, Speed + 1), 0, fieldHeight - 1);
             }
         }
-
-        public override void PerformSpecialAction(List<Animal> animals)
-        {
-            // Example: Antelope could "jump" or "hide" (not implemented, placeholder)
-        }
     }
 
     public class Lion : Animal
@@ -78,11 +80,13 @@
             Speed = 3;
             VisionRange = 7;
             ActionInterval = 1; // Acts every tick
-            Health = 120;       // Initial health value
+            Health = 120;       // Initial health
         }
 
         public override void Move(List<Animal> animals, int fieldWidth, int fieldHeight)
         {
+            DecreaseHealthOnMove();
+
             var nearestAntelope = animals
                 .OfType<Antelope>()
                 .OrderBy(a => DistanceTo(a))
@@ -106,11 +110,6 @@
                 X = Math.Clamp(X + rnd.Next(-Speed, Speed + 1), 0, fieldWidth - 1);
                 Y = Math.Clamp(Y + rnd.Next(-Speed, Speed + 1), 0, fieldHeight - 1);
             }
-        }
-
-        public override void PerformSpecialAction(List<Animal> animals)
-        {
-            // Example: Lion could "roar" (not implemented, placeholder)
         }
     }
 
