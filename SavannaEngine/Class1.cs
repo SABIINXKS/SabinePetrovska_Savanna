@@ -11,6 +11,10 @@
         public double Health { get; set; }
         private int _actionCounter = 0;
 
+        // For birth tracking
+        private int _nearSameTypeRounds = 0;
+        private Animal _lastNearbySameType = null;
+
         // Called by GameEngine each tick
         public void Tick(List<Animal> animals, int fieldWidth, int fieldHeight)
         {
@@ -24,6 +28,9 @@
             // Death check after action
             if (Health <= 0)
                 Die(animals);
+
+            // Birth check after action
+            CheckBirth(animals);
         }
 
         public abstract void Move(List<Animal> animals, int fieldWidth, int fieldHeight);
@@ -40,6 +47,46 @@
         public virtual void Die(List<Animal> animals)
         {
             animals.Remove(this);
+        }
+
+        // Birth function logic
+        private void CheckBirth(List<Animal> animals)
+        {
+            // Find nearest same type animal (excluding self)
+            var nearestSameType = animals
+                .Where(a => a.GetType() == this.GetType() && a != this)
+                .OrderBy(a => DistanceTo(a))
+                .FirstOrDefault(a => DistanceTo(a) <= 1); // Distance 1 means adjacent or same cell
+
+            if (nearestSameType != null)
+            {
+                if (_lastNearbySameType == nearestSameType)
+                    _nearSameTypeRounds++;
+                else
+                    _nearSameTypeRounds = 1;
+
+                _lastNearbySameType = nearestSameType;
+
+                if (_nearSameTypeRounds >= 3)
+                {
+                    // Birth: add new animal of same type at this position
+                    Animal baby = null;
+                    if (this is Antelope)
+                        baby = new Antelope { X = this.X, Y = this.Y };
+                    else if (this is Lion)
+                        baby = new Lion { X = this.X, Y = this.Y };
+
+                    if (baby != null)
+                        animals.Add(baby);
+
+                    _nearSameTypeRounds = 0; // Reset counter after birth
+                }
+            }
+            else
+            {
+                _nearSameTypeRounds = 0;
+                _lastNearbySameType = null;
+            }
         }
     }
 
