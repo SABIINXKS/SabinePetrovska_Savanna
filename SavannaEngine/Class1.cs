@@ -7,9 +7,9 @@
         public int Y { get; set; }
         public int Speed { get; set; }
         public int VisionRange { get; set; }
-        public int ActionInterval { get; set; } // How many ticks between actions
-        public double Health { get; set; }      // Health metric (changed to double)
-        private int _actionCounter = 0;         // Internal tick counter
+        public int ActionInterval { get; set; }
+        public double Health { get; set; }
+        private int _actionCounter = 0;
 
         // Called by GameEngine each tick
         public void Tick(List<Animal> animals, int fieldWidth, int fieldHeight)
@@ -21,6 +21,9 @@
                 PerformSpecialAction(animals);
                 _actionCounter = 0;
             }
+            // Death check after action
+            if (Health <= 0)
+                Die(animals);
         }
 
         public abstract void Move(List<Animal> animals, int fieldWidth, int fieldHeight);
@@ -32,6 +35,12 @@
         {
             Health -= 0.5;
         }
+
+        // Death function: removes itself from the animals list
+        public virtual void Die(List<Animal> animals)
+        {
+            animals.Remove(this);
+        }
     }
 
     public class Antelope : Animal
@@ -41,8 +50,8 @@
             Name = "Antelope";
             Speed = 2;
             VisionRange = 5;
-            ActionInterval = 2; // Acts every 2 ticks
-            Health = 100;       // Initial health
+            ActionInterval = 2;
+            Health = 100;
         }
 
         public override void Move(List<Animal> animals, int fieldWidth, int fieldHeight)
@@ -79,8 +88,8 @@
             Name = "Lion";
             Speed = 3;
             VisionRange = 7;
-            ActionInterval = 1; // Acts every tick
-            Health = 120;       // Initial health
+            ActionInterval = 1;
+            Health = 120;
         }
 
         public override void Move(List<Animal> animals, int fieldWidth, int fieldHeight)
@@ -102,7 +111,10 @@
                 Y = Math.Clamp(Y + moveY, 0, fieldHeight - 1);
 
                 if (DistanceTo(nearestAntelope) == 0)
+                {
                     animals.Remove(nearestAntelope);
+                    Health += 20; // Increase Lion's health when antelope is eaten
+                }
             }
             else
             {
