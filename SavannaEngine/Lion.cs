@@ -1,7 +1,17 @@
-﻿namespace SavannaEngine
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace SavannaEngine
 {
+    /// <summary>
+    /// Represents a lion with hunting logic and special actions.
+    /// </summary>
     public class Lion : Animal
     {
+        /// <summary>
+        /// Initializes a new instance of the Lion class with default properties.
+        /// </summary>
         public Lion()
         {
             Name = "Lion";
@@ -10,6 +20,12 @@
             ActionInterval = 1; // Acts every tick
         }
 
+        /// <summary>
+        /// Moves the lion towards the nearest antelope or randomly if none are nearby.
+        /// </summary>
+        /// <param name="animals">List of all animals in the field.</param>
+        /// <param name="fieldWidth">Width of the field.</param>
+        /// <param name="fieldHeight">Height of the field.</param>
         public override void Move(List<Animal> animals, int fieldWidth, int fieldHeight)
         {
             var nearestAntelope = animals
@@ -37,6 +53,10 @@
             }
         }
 
+        /// <summary>
+        /// Performs a special action unique to the lion (placeholder).
+        /// </summary>
+        /// <param name="animals">List of all animals in the field.</param>
         public override void PerformSpecialAction(List<Animal> animals)
         {
             // Example: Lion could "roar" (not implemented, placeholder)
