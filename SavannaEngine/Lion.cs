@@ -24,6 +24,8 @@ namespace SavannaEngine
         /// <summary>
         /// Moves the lion towards the nearest antelope or randomly if none are nearby.
         /// Decreases health by 0.5 on each move.
+        /// Increases health when antelope is eaten.
+        /// Removes lion from simulation if health is zero or less.
         /// </summary>
         /// <param name="animals">List of all animals in the field.</param>
         /// <param name="fieldWidth">Width of the field.</param>
@@ -47,7 +49,10 @@ namespace SavannaEngine
                 Y = Math.Clamp(Y + moveY, 0, fieldHeight - 1);
 
                 if (DistanceTo(nearestAntelope) == 0)
+                {
                     animals.Remove(nearestAntelope);
+                    Health += 5.0; // Increase health when antelope is eaten
+                }
             }
             else
             {
@@ -55,6 +60,21 @@ namespace SavannaEngine
                 X = Math.Clamp(X + rnd.Next(-Speed, Speed + 1), 0, fieldWidth - 1);
                 Y = Math.Clamp(Y + rnd.Next(-Speed, Speed + 1), 0, fieldHeight - 1);
             }
+
+            // Death logic: remove lion if health is zero or less
+            if (Health <= 0)
+            {
+                Die(animals);
+            }
+        }
+
+        /// <summary>
+        /// Removes this lion from the simulation due to lack of health.
+        /// </summary>
+        /// <param name="animals">List of all animals in the field.</param>
+        public void Die(List<Animal> animals)
+        {
+            animals.Remove(this);
         }
 
         /// <summary>
