@@ -4,24 +4,27 @@ class Program
 {
     static void Main()
     {
-        var engine = new GameEngine(20, 10);
+        var engine = new GameEngine(SavannaConstants.DefaultFieldWidth, SavannaConstants.DefaultFieldHeight);
+        var display = new ConsoleDisplay();
 
         bool running = true;
         while (running)
         {
             if (Console.KeyAvailable)
             {
-                var key = Console.ReadKey(true).Key;
-                if (key == ConsoleKey.A)
+                var key = Console.ReadKey(true).Key.ToString().ToUpper();
+                if (key == SavannaConstants.AddAntelopeKey)
                     engine.AddAnimal(new Antelope());
-                else if (key == ConsoleKey.L)
+                else if (key == SavannaConstants.AddLionKey)
                     engine.AddAnimal(new Lion());
-                else if (key == ConsoleKey.Q)
+                else if (key == SavannaConstants.QuitKey)
                     running = false;
             }
 
             engine.Tick();
+            display.Render(engine);
 
+<<<<<<< HEAD
             Console.Clear();
             Console.WriteLine("Press 'A' to add Antelope, 'L' to add Lion, 'Q' to quit.");
             Console.WriteLine("Field:");
@@ -54,6 +57,9 @@ class Program
                 Console.WriteLine($"{animal.Name} at ({animal.X}, {animal.Y}) | Health: {animal.Health}");
 
             Thread.Sleep(500); // Slow down the loop for visibility
+=======
+            Thread.Sleep(SavannaConstants.LoopDelayMs);
+>>>>>>> feature/iteration1
         }
     }
 }
