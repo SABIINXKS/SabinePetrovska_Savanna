@@ -24,11 +24,13 @@
         public const int AntelopeSpeed = 2;
         public const int AntelopeVisionRange = 5;
         public const int AntelopeActionInterval = 2;
+        public const double AntelopeDefaultHealth = 10.0;
 
         // Lion-specific constants
         public const string LionName = "Lion";
         public const int LionSpeed = 3;
         public const int LionVisionRange = 7;
         public const int LionActionInterval = 1;
+        public const double LionDefaultHealth = 12.0;
     }
 }
