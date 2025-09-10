@@ -29,7 +29,7 @@ namespace SavannaEngine
         /// </summary>
         /// <param name="fieldWidth">Width of the field.</param>
         /// <param name="fieldHeight">Height of the field.</param>
-        public GameEngine(int fieldWidth = 20, int fieldHeight = 10)
+        public GameEngine(int fieldWidth = SavannaConstants.DefaultFieldWidth, int fieldHeight = SavannaConstants.DefaultFieldHeight)
         {
             FieldWidth = fieldWidth;
             FieldHeight = fieldHeight;
