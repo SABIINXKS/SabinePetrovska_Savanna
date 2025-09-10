@@ -23,12 +23,15 @@ namespace SavannaEngine
 
         /// <summary>
         /// Moves the antelope away from nearby lions or randomly if no lions are nearby.
+        /// Decreases health by 0.5 on each move.
         /// </summary>
         /// <param name="animals">List of all animals in the field.</param>
         /// <param name="fieldWidth">Width of the field.</param>
         /// <param name="fieldHeight">Height of the field.</param>
         public override void Move(List<Animal> animals, int fieldWidth, int fieldHeight)
         {
+            Health -= 0.5;
+
             var nearestLion = animals
                 .OfType<Lion>()
                 .OrderBy(l => DistanceTo(l))
