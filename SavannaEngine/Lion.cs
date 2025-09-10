@@ -18,6 +18,7 @@ namespace SavannaEngine
             Speed = SavannaConstants.LionSpeed;
             VisionRange = SavannaConstants.LionVisionRange;
             ActionInterval = SavannaConstants.LionActionInterval;
+            Health = SavannaConstants.LionDefaultHealth;
         }
 
         /// <summary>
