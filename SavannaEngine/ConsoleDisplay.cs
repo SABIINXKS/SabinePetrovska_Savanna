@@ -1,4 +1,6 @@
 ﻿using SavannaEngine;
+using System;
+using System.Linq;
 
 public class ConsoleDisplay
 {
@@ -36,6 +38,6 @@ public class ConsoleDisplay
 
         Console.WriteLine(SavannaConstants.AnimalsLabel);
         foreach (var animal in engine.Animals)
-            Console.WriteLine($"{animal.Name} at ({animal.X}, {animal.Y}) | Health: {animal}");
+            Console.WriteLine($"{animal.Name} at ({animal.X}, {animal.Y}) | Health: {animal.Health}");
     }
 }
