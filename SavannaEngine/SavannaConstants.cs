@@ -18,5 +18,11 @@
         public const string AddAnimalPrompt = "Press 'A' to add Antelope, 'L' to add Lion, 'Q' to quit.";
         public const string FieldLabel = "Field:";
         public const string AnimalsLabel = "Animals on field:";
+
+        // Antelope-specific constants
+        public const string AntelopeName = "Antelope";
+        public const int AntelopeSpeed = 2;
+        public const int AntelopeVisionRange = 5;
+        public const int AntelopeActionInterval = 2;
     }
 }
