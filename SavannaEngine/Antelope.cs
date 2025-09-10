@@ -18,6 +18,7 @@ namespace SavannaEngine
             Speed = SavannaConstants.AntelopeSpeed;
             VisionRange = SavannaConstants.AntelopeVisionRange;
             ActionInterval = SavannaConstants.AntelopeActionInterval;
+            Health = SavannaConstants.AntelopeDefaultHealth;
         }
 
         /// <summary>
