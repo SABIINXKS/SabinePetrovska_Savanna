@@ -14,10 +14,10 @@ namespace SavannaEngine
         /// </summary>
         public Lion()
         {
-            Name = "Lion";
-            Speed = 3;
-            VisionRange = 7;
-            ActionInterval = 1; // Acts every tick
+            Name = SavannaConstants.LionName;
+            Speed = SavannaConstants.LionSpeed;
+            VisionRange = SavannaConstants.LionVisionRange;
+            ActionInterval = SavannaConstants.LionActionInterval;
         }
 
         /// <summary>
