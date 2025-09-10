@@ -14,10 +14,10 @@ namespace SavannaEngine
         /// </summary>
         public Antelope()
         {
-            Name = "Antelope";
-            Speed = 2;
-            VisionRange = 5;
-            ActionInterval = 2; // Acts every 2 ticks
+            Name = SavannaConstants.AntelopeName;
+            Speed = SavannaConstants.AntelopeSpeed;
+            VisionRange = SavannaConstants.AntelopeVisionRange;
+            ActionInterval = SavannaConstants.AntelopeActionInterval;
         }
 
         /// <summary>
