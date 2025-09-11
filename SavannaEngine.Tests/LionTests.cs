@@ -18,9 +18,13 @@ public class LionTests
         var animals = new List<Animal> { lion };
         double initialHealth = lion.Health;
 
+        double expectedHealth = initialHealth - 0.5;
+
         lion.Move(animals, SavannaConstants.DefaultFieldWidth, SavannaConstants.DefaultFieldHeight);
 
-        Assert.Equal(initialHealth - 0.5, lion.Health);
+        double actualHealth = lion.Health;
+
+        Assert.Equal(expectedHealth, actualHealth);
     }
 
     [Fact]
@@ -43,9 +47,13 @@ public class LionTests
         var animals = new List<Animal> { lion, antelope };
 
         double initialHealth = lion.Health;
+        double expectedHealth = initialHealth - 0.5 + 5.0;
+
         lion.Move(animals, SavannaConstants.DefaultFieldWidth, SavannaConstants.DefaultFieldHeight);
 
-        Assert.Equal(initialHealth - 0.5 + 5.0, lion.Health);
+        double actualHealth = lion.Health;
+
+        Assert.Equal(expectedHealth, actualHealth);
         Assert.DoesNotContain(antelope, animals);
     }
 
