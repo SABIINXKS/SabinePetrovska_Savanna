@@ -18,9 +18,13 @@ public class AntelopeTests
         var animals = new List<Animal> { antelope };
         double initialHealth = antelope.Health;
 
+        double expectedHealth = initialHealth - 0.5;
+
         antelope.Move(animals, SavannaConstants.DefaultFieldWidth, SavannaConstants.DefaultFieldHeight);
 
-        Assert.Equal(initialHealth - 0.5, antelope.Health);
+        double actualHealth = antelope.Health;
+
+        Assert.Equal(expectedHealth, actualHealth);
     }
 
     [Fact]
