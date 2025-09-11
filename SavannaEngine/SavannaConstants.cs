@@ -33,6 +33,7 @@
         public const int LionVisionRange = 7;
         public const int LionActionInterval = 1;
         public const double LionDefaultHealth = 12.0;
+        public const double LionHealthDecreasePerMove = 0.5;
 
         // Birth logic constants
         public const int BirthProximity = 1;
