@@ -26,13 +26,13 @@ namespace SavannaEngine
 
         /// <summary>
         /// Moves the antelope away from nearby lions or randomly if no lions are nearby.
-        /// Decreases health by 0.5 on each move.
+        /// Decreases health by AntelopeHealthDecreasePerMove on each move.
         /// Handles birth logic when two antelopes are adjacent for 3 consecutive rounds.
         /// Removes antelope from simulation if health is zero or less.
         /// </summary>
         public override void Move(List<Animal> animals, int fieldWidth, int fieldHeight)
         {
-            Health -= 0.5;
+            Health -= SavannaConstants.AntelopeHealthDecreasePerMove;
 
             var nearestLion = animals
                 .OfType<Lion>()

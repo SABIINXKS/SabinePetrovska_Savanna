@@ -25,6 +25,7 @@
         public const int AntelopeVisionRange = 5;
         public const int AntelopeActionInterval = 2;
         public const double AntelopeDefaultHealth = 10.0;
+        public const double AntelopeHealthDecreasePerMove = 0.5;
 
         // Lion-specific constants
         public const string LionName = "Lion";
