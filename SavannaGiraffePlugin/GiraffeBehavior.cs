@@ -1,4 +1,4 @@
-using SavannaContracts;
+﻿using SavannaContracts;
 
 namespace SavannaGiraffePlugin
 {

@@ -1,14 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <AssemblyName>SavannaGiraffePlugin</AssemblyName>
-    <RootNamespace>SavannaGiraffePlugin</RootNamespace>
-    <OutputType>Library</OutputType>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SavannaBehaviors\SavannaBehaviors.csproj" />
     <ProjectReference Include="..\SavannaContracts\SavannaContracts.csproj" />
   </ItemGroup>
 

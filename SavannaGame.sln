@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SavannaContracts", "Savanna
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SavannaBehaviors", "SavannaBehaviors\SavannaBehaviors.csproj", "{6A768370-46EC-47CF-B4EC-B7A396FF7B1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SavannaGiraffePlugin", "SavannaGiraffePlugin\SavannaGiraffePlugin.csproj", "{D047DB7E-6796-4C39-B5DF-1D9E9D1D4D61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6A768370-46EC-47CF-B4EC-B7A396FF7B1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A768370-46EC-47CF-B4EC-B7A396FF7B1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A768370-46EC-47CF-B4EC-B7A396FF7B1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D047DB7E-6796-4C39-B5DF-1D9E9D1D4D61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D047DB7E-6796-4C39-B5DF-1D9E9D1D4D61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D047DB7E-6796-4C39-B5DF-1D9E9D1D4D61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D047DB7E-6796-4C39-B5DF-1D9E9D1D4D61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
