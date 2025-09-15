@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SavannaContracts;
 
 namespace SavannaEngine
 {
@@ -22,6 +23,7 @@ namespace SavannaEngine
             VisionRange = SavannaConstants.LionVisionRange;
             ActionInterval = SavannaConstants.LionActionInterval;
             Health = SavannaConstants.LionDefaultHealth;
+            Behavior = AnimalFactory.CreateLion();
         }
 
         /// <summary>
@@ -129,6 +131,12 @@ namespace SavannaEngine
         public override void PerformSpecialAction(List<Animal> animals)
         {
             // Example: Lion could "roar" (not implemented, placeholder)
+        }
+
+        // Example method using behavior
+        public void Act()
+        {
+            Behavior.Act();
         }
     }
 }

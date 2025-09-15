@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SavannaBehaviors\SavannaBehaviors.csproj" />
     <ProjectReference Include="..\SavannaContracts\SavannaContracts.csproj" />
   </ItemGroup>
 

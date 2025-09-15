@@ -1,4 +1,6 @@
-﻿namespace SavannaEngine
+﻿using SavannaContracts;
+
+namespace SavannaEngine
 {
     /// <summary>
     /// Represents a base animal with movement and action logic.
@@ -11,13 +13,11 @@
         public int Speed { get; set; }
         public int VisionRange { get; set; }
         public int ActionInterval { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the health of the animal.
-        /// </summary>
         public double Health { get; set; }
-
         private int _actionCounter = 0;
+
+        // Add this property:
+        public IAnimalBehavior Behavior { get; set; }
 
         public void Tick(List<Animal> animals, int fieldWidth, int fieldHeight)
         {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SavannaContracts;
 
 namespace SavannaEngine
 {
@@ -22,6 +23,7 @@ namespace SavannaEngine
             VisionRange = SavannaConstants.AntelopeVisionRange;
             ActionInterval = SavannaConstants.AntelopeActionInterval;
             Health = SavannaConstants.AntelopeDefaultHealth;
+            Behavior = AnimalFactory.CreateAntelope();
         }
 
         /// <summary>
@@ -122,6 +124,12 @@ namespace SavannaEngine
         public override void PerformSpecialAction(List<Animal> animals)
         {
             // Example: Antelope could "jump" or "hide" (not implemented, placeholder)
+        }
+
+        // Example method using behavior
+        public void Act()
+        {
+            Behavior.Act();
         }
     }
 }
