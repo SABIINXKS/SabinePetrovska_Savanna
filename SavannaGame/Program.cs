@@ -26,7 +26,7 @@ class Program
                     engine.AddAnimal(new Antelope());
                 else if (key == SavannaConstants.AddLionKey)
                     engine.AddAnimal(new Lion());
-                else if (key == "G") // Press G to add a giraffe
+                else if (key == SavannaConstants.AddGiraffeKey) // Use constant for giraffe
                     engine.AddAnimal(new PluginAnimal(new GiraffeBehavior()));
                 else if (key == SavannaConstants.QuitKey)
                     running = false;

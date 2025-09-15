@@ -10,12 +10,13 @@
         public const int LoopDelayMs = 500;
         public const string AddAntelopeKey = "A";
         public const string AddLionKey = "L";
+        public const string AddGiraffeKey = "G"; // Added constant for giraffe
         public const string QuitKey = "Q";
         public const char LionSymbol = 'L';
         public const char AntelopeSymbol = 'A';
         public const char EmptyCellSymbol = ' ';
         public const char BorderSymbol = '#';
-        public const string AddAnimalPrompt = "Press 'A' to add Antelope, 'L' to add Lion, 'Q' to quit.";
+        public const string AddAnimalPrompt = "Press 'A' to add Antelope, 'L' to add Lion, 'G' to add Giraffe, 'Q' to quit.";
         public const string FieldLabel = "Field:";
         public const string AnimalsLabel = "Animals on field:";
 
