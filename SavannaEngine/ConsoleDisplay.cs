@@ -23,12 +23,15 @@ public class ConsoleDisplay
             for (int x = 0; x < engine.FieldWidth; x++)
             {
                 var animalsAtCell = engine.Animals.Where(a => a.X == x && a.Y == y).ToList();
-                if (animalsAtCell.Any(a => a is Lion))
-                    Console.Write(SavannaConstants.LionSymbol);
-                else if (animalsAtCell.Any(a => a is Antelope))
-                    Console.Write(SavannaConstants.AntelopeSymbol);
+                if (animalsAtCell.Any())
+                {
+                    // Show the first letter of the first animal in the cell
+                    Console.Write(char.ToUpper(animalsAtCell.First().Name[0]));
+                }
                 else
+                {
                     Console.Write(SavannaConstants.EmptyCellSymbol);
+                }
             }
             Console.WriteLine(SavannaConstants.BorderSymbol);
         }

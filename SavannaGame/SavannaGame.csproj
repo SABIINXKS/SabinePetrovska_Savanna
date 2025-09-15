@@ -11,4 +11,10 @@
     <ProjectReference Include="..\SavannaEngine\SavannaEngine.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="SavannaGiraffePlugin">
+      <HintPath>..\SavannaGiraffePlugin\bin\Debug\net8.0\SavannaGiraffePlugin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
