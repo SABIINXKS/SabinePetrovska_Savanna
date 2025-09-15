@@ -1,0 +1,43 @@
+﻿namespace SavannaEngine
+{
+    /// <summary>
+    /// Contains constant values used throughout the Savanna simulation.
+    /// </summary>
+    public static class SavannaConstants
+    {
+        public const int DefaultFieldWidth = 20;
+        public const int DefaultFieldHeight = 10;
+        public const int LoopDelayMs = 500;
+        public const string AddAntelopeKey = "A";
+        public const string AddLionKey = "L";
+        public const string AddGiraffeKey = "G"; // Added constant for giraffe
+        public const string QuitKey = "Q";
+        public const char LionSymbol = 'L';
+        public const char AntelopeSymbol = 'A';
+        public const char EmptyCellSymbol = ' ';
+        public const char BorderSymbol = '#';
+        public const string AddAnimalPrompt = "Press 'A' to add Antelope, 'L' to add Lion, 'G' to add Giraffe, 'Q' to quit.";
+        public const string FieldLabel = "Field:";
+        public const string AnimalsLabel = "Animals on field:";
+
+        // Antelope-specific constants
+        public const string AntelopeName = "Antelope";
+        public const int AntelopeSpeed = 2;
+        public const int AntelopeVisionRange = 5;
+        public const int AntelopeActionInterval = 2;
+        public const double AntelopeDefaultHealth = 10.0;
+        public const double AntelopeHealthDecreasePerMove = 0.5;
+
+        // Lion-specific constants
+        public const string LionName = "Lion";
+        public const int LionSpeed = 3;
+        public const int LionVisionRange = 7;
+        public const int LionActionInterval = 1;
+        public const double LionDefaultHealth = 12.0;
+        public const double LionHealthDecreasePerMove = 0.5;
+
+        // Birth logic constants
+        public const int BirthProximity = 1;
+        public const int BirthRoundsRequired = 3;
+    }
+}

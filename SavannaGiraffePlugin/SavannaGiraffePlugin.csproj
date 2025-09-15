@@ -1,20 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SavannaBehaviors\SavannaBehaviors.csproj" />
+    <ProjectReference Include="..\SavannaContracts\SavannaContracts.csproj" />
     <ProjectReference Include="..\SavannaEngine\SavannaEngine.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="SavannaGiraffePlugin">
-      <HintPath>..\SavannaGiraffePlugin\bin\Debug\net8.0\SavannaGiraffePlugin.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\SavannaGame\SavannaGame.csproj" />
   </ItemGroup>
 
 </Project>
